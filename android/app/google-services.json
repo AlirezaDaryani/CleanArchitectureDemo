@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "50508728094",
+    "project_id": "creativefabrica-f4b66",
+    "storage_bucket": "creativefabrica-f4b66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50508728094:android:20c35d26222d2dfd8aab0f",
+        "android_client_info": {
+          "package_name": "com.creativefabrica.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz6pNfqdyPpKyYHGiV7kEtH-2oebAGQUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
