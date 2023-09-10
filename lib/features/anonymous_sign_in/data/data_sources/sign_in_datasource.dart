@@ -1,5 +1,4 @@
 import 'package:CreativeFabrica/core/errors/exceptions.dart';
-import 'package:CreativeFabrica/core/network/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -23,14 +22,14 @@ class SignInDataSourceImpl implements SignInDataSource {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case "operation-not-allowed":
-          print("Anonymous auth hasn't been enabled for this project.");
+          debugPrint("Anonymous auth hasn't been enabled for this project.");
           throw ServerException(statusCode: 502, error: 'UID is null');
         default:
-          print("Unknown error.");
+          debugPrint("Unknown error.");
           throw ServerException(statusCode: 503, error: 'UID is null');
       }
     } catch (e) {
-      print("Unknown error. 3");
+      debugPrint("Unknown error. 3");
       throw ServerException(
           statusCode: 504, error: "Unknown error with sign in");
     }

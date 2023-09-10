@@ -1,11 +1,8 @@
-import 'dart:async';
-
 import 'package:CreativeFabrica/core/errors/failure.dart';
-import 'package:CreativeFabrica/features/anonymous_sign_in/data/models/sign_in_model.dart';
 import 'package:CreativeFabrica/features/anonymous_sign_in/domain/entities/sign_in_response.dart';
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../domain/use_cases/sign_in_usecase.dart';
@@ -24,13 +21,13 @@ class SignInBloc extends Bloc<SignInMainEvent, SignInState> {
           final either = await useCase(NoParams());
           either.fold((l) => handleFailure(l, emit),
               (r) => emit(SignInSuccessState(signInModel: r)));
-          print('SignInEvent');
+          debugPrint('SignInEvent');
           break;
         case SignInRetryEvent:
           final either = await useCase(NoParams());
           either.fold((l) => handleFailure(l, emit),
               (r) => emit(SignInSuccessState(signInModel: r)));
-          print('SignInRetry');
+          debugPrint('SignInRetry');
           break;
       }
     });

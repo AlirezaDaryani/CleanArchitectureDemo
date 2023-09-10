@@ -1,9 +1,10 @@
+import 'dart:async';
+
 import 'package:CreativeFabrica/features/anonymous_sign_in/presentation/manager/sign_in_bloc.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../injection.dart';
+import '../../../home/presentation/pages/home_screen.dart';
 
 ///A screen that show loading and screens for automatic sign-in feature with Firebase
 ///Screen will change after sign-in complete
@@ -17,10 +18,13 @@ class SignInScreen extends StatelessWidget {
       body: SafeArea(
         child: BlocListener<SignInBloc, SignInState>(
           listener: (context, state) {
-            print(state);
-            if (state.runtimeType is SignInSuccessState) {
-              //todo go to the next page
-              print('SignInSuccessState');
+            debugPrint(state.runtimeType.toString());
+            if (state is SignInSuccessState) {
+              Timer(const Duration(seconds: 2), () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => const HomeScreen(),
+                ));
+              });
             }
           },
           child: Padding(
