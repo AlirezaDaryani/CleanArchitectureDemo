@@ -25,54 +25,49 @@ class HomeScreen extends StatelessWidget {
               case PhotosResponseState:
                 final responseState = state as PhotosResponseState;
                 return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ListView.separated(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 18,
+                              crossAxisSpacing: 18),
                       itemBuilder: (context, index) => InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => PhotoDetailScreen(
-                                    imageURL: responseState
-                                        .photosResponse.photos![index].imgSrc!),
-                              ));
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.blue[200]),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    height: 60,
-                                    width: 60,
-                                    child: ClipOval(
-                                      child: CachedNetworkImage(
-                                        fit: BoxFit.fill,
-                                        imageUrl: responseState.photosResponse
-                                            .photos![index].imgSrc!,
-                                        errorWidget: (context, url, error) =>
-                                            Image.asset('assets/nasa_logo.jpg'),
-                                        progressIndicatorBuilder: (context, url,
-                                                progress) =>
-                                            const CircularProgressIndicator(),
-                                      ),
-                                    ),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => PhotoDetailScreen(
+                                imageURL: responseState
+                                    .photosResponse.photos![index].imgSrc!),
+                          ));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: const Color(0xff0B3D91)),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipOval(
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.fill,
+                                  height: 100,
+                                  width: 100,
+                                  imageUrl: responseState
+                                      .photosResponse.photos![index].imgSrc!,
+                                  errorWidget: (context, url, error) =>
+                                      Image.asset('assets/nasa_logo.jpg'),
+                                  progressIndicatorBuilder:
+                                      (context, url, progress) =>
+                                          const CircularProgressIndicator(
+                                    color: Colors.white,
                                   ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(responseState.photosResponse
-                                      .photos![index].camera!.fullName!),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                      separatorBuilder: (context, index) => const SizedBox(
-                            height: 10,
-                          ),
-                      itemCount: responseState.photosResponse.photos!.length),
-                );
+                        ),
+                      ),
+                    ));
               case PhotosServerErrorState:
                 return Padding(
                   padding: const EdgeInsets.all(18.0),

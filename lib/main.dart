@@ -21,6 +21,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          fontFamily: 'BioRhyme',
+          appBarTheme:
+              const AppBarTheme(color: Color(0xff0B3D91), elevation: 5),
+          buttonTheme: const ButtonThemeData(
+            buttonColor: Color(0xff0B3D91),
+          )),
       home: BlocProvider<SignInBloc>(
           create: (_) => serviceLocator<SignInBloc>()..add(SignInEvent()),
           child: const SignInScreen()),
