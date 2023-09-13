@@ -17,12 +17,16 @@ apiKey = YOUR_KEY
    
    ```dart run build_runner build```
 5. It should remove all errors on lib/utils/env.dart and create a new class named env.g.dart at the same directory
-6. When all issues has been gone, You can connect your phone or open your emulator or simulator to run the app with
+6. When all issues has been gone, you can run unit tests with below command in terminal 
 
+``` flutter test```
+
+7. If all tests passed, You can connect your phone or open your emulator or simulator to run the app with
 
 ``` flutter run```
 
-#Notice
+### Notice
+
 App includes Firebase for anonymous sign-in with all required files
 
 
